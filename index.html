@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forex Bot Dashboard</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+<div class="container" style="width: 100%; max-width: 600px;">
+
+    <h2>Equity: $<span id="balanceCard">1000</span></h2>
+    <h3 id="stats">Trades: 0 | Wins: 0 | Losses: 0 | Win Rate: 0%</h3>
+
+    <h1>Forex Market Dashboard</h1>
+
+    <button id="refreshBtn">Refresh Prices</button>
+    <button id="startBtn">start / stop Bot</button>
+    <button id="resetBtn">Reset</button>
+    <div class="ai-panel">
+        <h3>AI Signal: <span id="aiSignal">WAIT</span></h3>
+        <h3>Confidence: <span id="aiScore">0</span></h3>
+        <h3>Current Pair: <span id="currentPair">EURUSD</span></h3>
+    </div>
+
+    <div class="log-panel">
+        <h3>Bot logs</h3>
+        <div id="logs" style="height: 100px;
+        overflow:auto; background: black; color:lime;"></div>
+    </div>
+    <div id="mtfStatus">MTF:...</div>
+
+    <p id="botStatus"style="color:lime">Bot: ON</p>
+    <h3>AI Status</h3>
+    <p id="aiStatus">Waiting...</p>
+<!-- Chart -->
+    <div class="chart-container">
+        <canvas id="priceChart" height="100"></canvas>
+    </div>
+    <h2>Market Data</h2>
+<div class="status-cards">
+    <div>Balance: $<span id="balanceCard">0</span></div>
+    <div>Win Rate: <span id="winRateCard">0%</span></div>
+    <div>Trades: <span id="tradeCard">0</span></div>
+</div>
+<h1>My Bot</h1>
+<button onclick="loginDeriv()">Login to Deriv</button>
+    <!-- Market Table -->
+    <table>
+        <thead>
+            <tr>
+                <th>Market</th>
+                <th>Pair</th>
+                <th>Price</th>
+                <th>SMA (5)</th>
+                <th>SMA (10)</th>
+                <th>Signal</th>
+                <th>Action</th>
+                <th>RSI</th>
+            </tr>
+        </thead>
+        <tbody id="forexTable">
+            <tr>
+                <td colspan="8">Loading market
+                     data...</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- Open Trades -->
+    <h3>Open Trades</h3>
+    <table id="tradesTable">
+        <thead>
+            <tr>
+                <th>Pair</th>
+                <th>Type</th>
+                <th>Entry</th>
+                <th>SL</th>
+                <th>TP</th>
+                <th>PnL</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody id="tradeTabletbody"></tbody>
+    </table>
+
+    <!-- Trade History -->
+    <h3>Trade History</h3>
+    <table id="historyTable">
+        <thead>
+            <tr>
+                <th>Pair</th>
+                <th>Type</th>
+                <th>Entry</th>
+                <th>Exit</th>
+                <th>PnL</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+</div>
+
+<script src="script.js" defer></script>
+</body>
+</html>
